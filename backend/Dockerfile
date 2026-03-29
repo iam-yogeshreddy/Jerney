@@ -8,7 +8,7 @@ RUN npm ci --only=production && npm cache clean --force
 FROM node:20-slim AS production
 
 # Security: run as non-root user
-RUN addgroup -S appgroup && adduser -S appuser -G appgroup
+RUN groupadd -r appgroup && useradd -r -g appgroup appuser
 
 # Security: remove unnecessary packages
 RUN apk --no-cache add dumb-init=1.2.5-r3
