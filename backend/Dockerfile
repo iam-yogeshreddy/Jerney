@@ -9,6 +9,10 @@ RUN npm ci --omit=dev && npm cache clean --force
 # ---- Production stage ----
 FROM node:20-slim AS production
 
+# Fix npm vulnerabilities
+RUN npm install -g npm@latest
+
+# Install dumb-init (pinned)
 RUN apt-get update && \
     apt-get install -y --no-install-recommends dumb-init=1.2.5-2 && \
     rm -rf /var/lib/apt/lists/*
