@@ -9,12 +9,10 @@ RUN npm ci --omit=dev && npm cache clean --force
 # ---- Production stage ----
 FROM node:20-slim AS production
 
-# Install dumb-init (Debian way)
 RUN apt-get update && \
-    apt-get install -y --no-install-recommends dumb-init && \
+    apt-get install -y --no-install-recommends dumb-init=1.2.5-2 && \
     rm -rf /var/lib/apt/lists/*
 
-# Create non-root user (Debian way)
 RUN groupadd -r appgroup && useradd -r -g appgroup appuser
 
 WORKDIR /app
