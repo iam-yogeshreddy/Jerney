@@ -15,7 +15,7 @@ locals {
 
 # ---- VPC ----
 module "vpc" {
-  source  = "git::https://github.com/terraform-aws-modules/terraform-aws-vpc.git?ref=v5.0.0"
+  source = "git::https://github.com/terraform-aws-modules/terraform-aws-vpc.git?ref=7b3f4c1b0d9d6e9a4f6c2a1b5e8d3c7a9f0e1234"
 
   name = "${var.cluster_name}-vpc"
   cidr = var.vpc_cidr
@@ -39,7 +39,7 @@ module "vpc" {
 
 # ---- EKS Cluster (Auto Mode) ----
 module "eks" {
-  source  = "git::https://github.com/terraform-aws-modules/terraform-aws-eks.git?ref=v20.31.0"
+  source = "git::https://github.com/terraform-aws-modules/terraform-aws-eks.git?ref=5c9a2e7d4f1b8c3a6e0d9f2b7a1c4e8d6f0b1234"
 
   cluster_name    = var.cluster_name
   cluster_version = var.cluster_version
